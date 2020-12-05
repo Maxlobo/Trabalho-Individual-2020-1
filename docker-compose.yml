@@ -2,16 +2,38 @@ version: "3.8"
 services:
   db:
     image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
-  web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/myapp
+    container_name: ${DATABASE_HOST}
     ports:
-      - "3000:3000"
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./api/log/db:/logs
+    env_file: .env
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+
+  api:
+    container_name: ${APP_NAME}
+    build: 
+      context: .
+      dockerfile: ./api/Dockerfile
+    ports: 
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - ./api:/app
+      - gem_cache:/usr/local/bundle/gems
     depends_on:
       - db
+    env_file: .env
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+
+volumes:
+  gem_cache:
+  db_data:
+  node_modules:
+
+networks: 
+  project_network:
+

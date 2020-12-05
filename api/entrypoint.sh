@@ -2,7 +2,17 @@
 set -e
 
 # Remove a potentially pre-existing server.pid for Rails.
-rm -f /myapp/tmp/pids/server.pid
+rm -rf /opt/app/tmp/pids/server.pid
 
-# Then exec the container's main process (what's set as CMD in the Dockerfile).
-exec "$@"
+rake db:create
+rake db:migrate 
+
+if [ "$RAILS_ENV" = "development" ]
+then
+    rails server -p 3000 -b 0.0.0.0
+elif [ "$RAILS_ENV" = "test" ]
+then
+    rake test
+else
+    echo "Unknown RAILS_ENV value..."
+fi
