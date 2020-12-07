@@ -1,7 +1,5 @@
-#!/bin/bash
 set -e
 
-# Remove a potentially pre-existing server.pid for Rails.
 rm -rf /opt/app/tmp/pids/server.pid
 
 rake db:create

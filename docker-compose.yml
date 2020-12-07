@@ -29,6 +29,20 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
 
+  frontend:
+    container_name: ${FRONT_APP_NAME}
+    build: 
+      context: .
+      dockerfile: ./client/Dockerfile
+    ports: 
+      - ${FRONT_APP_PORT}:${FRONT_APP_PORT}
+    volumes:
+      - ./client:/app/client
+      - node_modules:/app/client/node_modules
+    env_file: .env
+    environment:
+      CLIENT_MODE: ${CLIENT_MODE}
+
 volumes:
   gem_cache:
   db_data:
