@@ -1,9 +1,10 @@
+#!/bin/bash
 set -e
 
 rm -rf /opt/app/tmp/pids/server.pid
 
 rake db:create
-rake db:migrate 
+rake db:migrate
 
 if [ "$RAILS_ENV" = "development" ]
 then

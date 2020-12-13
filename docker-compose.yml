@@ -12,42 +12,45 @@ services:
     environment:
       - POSTGRES_USER=${DATABASE_USER}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    networks:
+      - project_network
 
   api:
     container_name: ${APP_NAME}
-    build: 
+    build:
       context: .
       dockerfile: ./api/Dockerfile
-    ports: 
+    ports:
       - ${APP_PORT}:${APP_PORT}
     volumes:
-      - ./api:/app
+      - ./api:/app/api
       - gem_cache:/usr/local/bundle/gems
     depends_on:
       - db
     env_file: .env
     environment:
       RAILS_ENV: ${RAILS_ENV}
+    networks:
+      - project_network
 
   frontend:
     container_name: ${FRONT_APP_NAME}
-    build: 
+    build:
       context: .
       dockerfile: ./client/Dockerfile
-    ports: 
+    ports:
       - ${FRONT_APP_PORT}:${FRONT_APP_PORT}
     volumes:
       - ./client:/app/client
       - node_modules:/app/client/node_modules
     env_file: .env
     environment:
-      CLIENT_MODE: ${CLIENT_MODE}
+      FRONT_MODE: ${FRONT_MODE}
 
 volumes:
   gem_cache:
   db_data:
   node_modules:
 
-networks: 
+networks:
   project_network:
-

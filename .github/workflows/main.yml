@@ -3,7 +3,7 @@ name: CI
 on:
   push:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -15,5 +15,5 @@ jobs:
         run: docker-compose up --build -d
       - name: test_api
         run: docker-compose run -e "RAILS_ENV=test" --rm api
-      - name: test_client
-        run: docker-compose run -e "FRONT_MODE=test" --rm client
+      - name: test_frontend
+        run: docker-compose run -e "FRONT_MODE=test" --rm frontend

@@ -7,9 +7,9 @@ COPY ./client/package.json .
 COPY ./client/yarn.lock .
 RUN yarn
 
-COPY . /app
+COPY ./client .
 
-COPY ./client/entrypoint.sh /usr/bin/entrypoint_front.sh
+COPY ./client/entrypoint_front.sh /usr/bin/entrypoint_front.sh
 RUN chmod +x /usr/bin/entrypoint_front.sh
 
 ENTRYPOINT ["entrypoint_front.sh"]

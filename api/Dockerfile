@@ -15,11 +15,11 @@ COPY ./api/Gemfile.lock .
 
 RUN bundle install
 
-COPY . /app
+COPY ./api .
 
-COPY ./api/entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./api/entrypoint-api.sh /usr/bin/entrypoint-api.sh
 
-RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint-api.sh
 
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["entrypoint-api.sh"]
