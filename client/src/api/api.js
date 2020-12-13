@@ -1,9 +1,13 @@
-import axios from 'axios'
+import axios from "axios";
 
-const base = 'http://localhost:3000/api/v1'
+const url =
+  process.env.FRONT_MODE === "production"
+    ? "https://backend-gces.herokuapp.com"
+    : "http://localhost:3000";
 
+const base = `${url}/api/v1`;
 const API = axios.create({
-  baseURL: base
-})
+  baseURL: base,
+});
 
-export default API
+export default API;

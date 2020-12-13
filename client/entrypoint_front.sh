@@ -12,4 +12,5 @@ then
     yarn dev
 else
     echo "Unknown FRONT_MODE value..."
+    yarn serve
 fi
