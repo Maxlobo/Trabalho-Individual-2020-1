@@ -7,7 +7,7 @@ const url =
 
 const base = `${url}/api/v1`
 const API = axios.create({
-  baseURL: base,
+  baseURL: base
 })
 
-export default API;
+export default API
