@@ -6,6 +6,8 @@
 
 ![CI](https://github.com/Maxlobo/Trabalho-Individual-2020-1/workflows/CI/badge.svg?branch=master)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Maxlobo_Trabalho-Individual-2020-1&metric=alert_status)](https://sonarcloud.io/dashboard?id=Maxlobo_Trabalho-Individual-2020-1)
+
 
 # Solução
 
@@ -37,11 +39,11 @@ Para rodar os testes do trabalho dockerizado utilize os comandos:
 - Frontend
 
 ```sh
-docker-compose run client yarn run test:unit
+docker-compose run -e "NODE_ENV=test" --rm frontend
 ```
 
 - Backend
 
 ```sh
-docker-compose run api bundle exec rails test
+docker-compose run -e "RAILS_ENV=test" --rm api
 ```
