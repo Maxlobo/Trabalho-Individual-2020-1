@@ -11,7 +11,7 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.0.4
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "gces-trabalho-individual"
+          heroku_app_name: "backend-gces-max"
           heroku_email: "maxhb.df@gmail.com"
         env:
           HD_APP_BASE: "api"
