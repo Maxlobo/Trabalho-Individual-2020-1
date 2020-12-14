@@ -1,16 +1,16 @@
 #!/bin/bash
 set -e
 
-if [ "$FRONT_MODE" = "build" ]
+if [ "$NODE_ENV" = "build" ]
 then
     yarn build
-elif [ "$FRONT_MODE" = "test" ]
+elif [ "$NODE_ENV" = "test" ]
 then
     yarn test:unit
-elif [ "$FRONT_MODE" = "dev" ]
+elif [ "$NODE_ENV" = "dev" ]
 then
     yarn dev
 else
-    echo "Unknown FRONT_MODE value..."
+    echo "Unknown NODE_ENV value..."
     yarn serve
 fi
