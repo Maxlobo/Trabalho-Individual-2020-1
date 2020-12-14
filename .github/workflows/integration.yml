@@ -11,18 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: build
         run: docker-compose up --build -d
       - name: test_api
         run: docker-compose run -e "RAILS_ENV=test" --rm api
       - name: test_frontend
         run: docker-compose run -e "NODE_ENV=test" --rm frontend
-
-
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
