@@ -1,0 +1,47 @@
+# Trabalho Individual 2020-1
+
+**Aluno**: Max Henrique Barbosa
+
+**Matrícula**: 160047013
+
+![CI](https://github.com/Maxlobo/Trabalho-Individual-2020-1/workflows/CI/badge.svg?branch=master)
+
+
+# Solução
+
+## Docker
+
+Foi utilizado o Docker para a criação dos ambientes de frontend, api e database. Para isso foi criado um arquivo docker-compose.yml na raiz do projeto e arquivos Dockerfile (juntamente com arquivos de entrypoit.sh), dentro da pasta de cada ambiente: **client** e **api** (com exceção da database por já haver uma image do postgres no Docker).
+
+Para facilitar a comunicação entre os conteiners da api e do banco de dados foi criada uma network chamada de **project_network**.
+
+
+## Integração Contínua
+
+Para a Integração contínua foi usado o Github Actions. Foi criado o workflow **CI** onde todas as configurações de build, testes e da ferramenta sonarcloud para a manutenibilidade e qualidade de cada execução de push ou pull request feitos para as branches estáveis do trabalho.
+
+## Deploy Heroku
+
+Fora realizado o deploy do projeto no Heroku (apenas no back).
+
+# Como executar
+
+Para subir e buildar o projeto, basta rodar o comando abaixo:
+
+```sh
+docker-compose up --build -d
+```
+
+Para rodar os testes do trabalho dockerizado utilize os comandos:
+
+- Frontend
+
+```sh
+docker-compose run client yarn run test:unit
+```
+
+- Backend
+
+```sh
+docker-compose run api bundle exec rails test
+```
