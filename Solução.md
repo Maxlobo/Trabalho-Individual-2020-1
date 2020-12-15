@@ -40,11 +40,11 @@ Para rodar os testes do trabalho dockerizado utilize os comandos:
 - Frontend
 
 ```sh
-docker-compose run -e "NODE_ENV=test" --rm frontend
+docker-compose run --rm frontend
 ```
 
 - Backend
 
 ```sh
-docker-compose run -e "RAILS_ENV=test" --rm api
+docker-compose run --rm api
 ```
