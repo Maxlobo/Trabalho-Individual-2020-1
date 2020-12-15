@@ -22,9 +22,10 @@ Para facilitar a comunicação entre os conteiners da api e do banco de dados fo
 
 Para a Integração contínua foi usado o Github Actions. Foi criado o workflow **CI** onde todas as configurações de build, testes e da ferramenta sonarcloud para a manutenibilidade e qualidade de cada execução de push ou pull request feitos para as branches estáveis do trabalho.
 
-## Deploy Heroku
+## Deploy 
 
-Fora realizado o deploy do projeto no Heroku (apenas no back).
+**Heroku** O deploy do backend foi realizado no Heroku. http://backend-gces-max.herokuapp.com/api/v1/profiles
+**Vercel** O deploy do frontend foi feito no Vercel. https://trabalho-individual-2020-1-git-master.maxlobo.vercel.app/#/
 
 # Como executar
 
