@@ -24,8 +24,8 @@ Para a Integração contínua foi usado o Github Actions. Foi criado o workflow 
 
 ## Deploy 
 
-**Heroku** O deploy do backend foi realizado no Heroku. http://backend-gces-max.herokuapp.com/api/v1/profiles
-**Vercel** O deploy do frontend foi feito no Vercel. https://trabalho-individual-2020-1-git-master.maxlobo.vercel.app/#/
+ - **Heroku** O deploy do backend foi realizado no Heroku. http://backend-gces-max.herokuapp.com/api/v1/profiles
+ - **Vercel** O deploy do frontend foi feito no Vercel. https://trabalho-individual-2020-1-git-master.maxlobo.vercel.app/#/
 
 # Como executar
 
